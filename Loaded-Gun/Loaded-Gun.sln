@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loaded-Gun", "Loaded-Gun.csproj", "{113B9B8D-1953-2B19-50F8-2629ABB04C27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loaded-Gun.Editor.Plugins", "Loaded-Gun.Editor.Plugins.csproj", "{BF637A9A-BF54-655D-2B78-11D4E86A08B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loaded-Gun.Editor", "Loaded-Gun.Editor.csproj", "{3AC305CB-7EE8-7635-E058-8347A5BD53A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{113B9B8D-1953-2B19-50F8-2629ABB04C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113B9B8D-1953-2B19-50F8-2629ABB04C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113B9B8D-1953-2B19-50F8-2629ABB04C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113B9B8D-1953-2B19-50F8-2629ABB04C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF637A9A-BF54-655D-2B78-11D4E86A08B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF637A9A-BF54-655D-2B78-11D4E86A08B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF637A9A-BF54-655D-2B78-11D4E86A08B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF637A9A-BF54-655D-2B78-11D4E86A08B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC305CB-7EE8-7635-E058-8347A5BD53A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC305CB-7EE8-7635-E058-8347A5BD53A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC305CB-7EE8-7635-E058-8347A5BD53A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC305CB-7EE8-7635-E058-8347A5BD53A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
