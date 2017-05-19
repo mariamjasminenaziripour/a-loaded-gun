@@ -98,13 +98,14 @@ public class Lighter : MonoBehaviour {
 			if (gesture.isOverGui ){
 				if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) ){
 					transform.position += (Vector3)gesture.deltaPosition;
+                    //instantiate pointlight prefab under finger location
 				}
 			}
 		}
 	}
-
-	// on touch up, instantiate object. trying screen to world point in triangle but it is instantiating on the edge. fml. 
+edge. fml. 
 	void On_TouchUp (Gesture gesture){
+	// on touch up, instantiate object. trying screen to world point in triangle but it is instantiating on the 
 
 		if (fingerId == gesture.fingerIndex) {
 			fingerId = -1;
@@ -133,7 +134,7 @@ public class Lighter : MonoBehaviour {
 				newCage.GetComponent<AudioSource> ().Play ();
 				Destroy (gunFrame);
 			}
-
+//DESTROY POINT LIGHT ON UP
 		}
 	}
 
@@ -167,4 +168,5 @@ public class Lighter : MonoBehaviour {
 			}
 		}
 	}
+
 }
