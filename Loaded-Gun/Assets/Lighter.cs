@@ -103,7 +103,7 @@ public class Lighter : MonoBehaviour {
 			}
 		}
 	}
-edge. fml. 
+
 	void On_TouchUp (Gesture gesture){
 	// on touch up, instantiate object. trying screen to world point in triangle but it is instantiating on the 
 

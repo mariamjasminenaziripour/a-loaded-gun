@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DAA5C09D-3A40-D93C-B17A-1491388A6A23}</ProjectGuid>
+    <ProjectGuid>{E1DD299D-3DA7-9C23-5EF4-FE5D701BD546}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_0;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_0;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT;MOBILE_INPUT;UNITY_HAS_GOOGLEVR;ENABLE_DUCK_TYPING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -136,23 +136,15 @@
      <None Include="Assets\EasyTouchBundle\Readme.txt" />
      <None Include="Assets\MaterialUI\Fonts\Roboto\NOTICE.txt" />
      <None Include="Assets\MaterialUI\Materials\SignedDistanceFieldUI.shader" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\MaterialUI\Fonts\Resources\Material Design Icons\LICENSE.txt" />
      <None Include="Assets\CameraCollision\Readme.txt" />
      <None Include="Assets\MaterialUI\CHANGELOG.txt" />
-     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
-     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouch\RealseNotes.txt" />
-     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
      <None Include="Assets\Plugins\Ink\Template\Template.txt" />
- <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>/Users/mnaziripour/Documents/Loaded Gun/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="Assembly-UnityScript">
- <HintPath>/Users/mnaziripour/Documents/Loaded Gun/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>/Users/mnaziripour/Documents/a-loaded-gun/Loaded-Gun/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
@@ -221,13 +213,13 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Ionic.Zip">
- <HintPath>/Users/mnaziripour/Documents/Loaded Gun/Assets/MaterialUI/Utils/Editor/UnityZip/Ionic.Zip.dll</HintPath>
+ <HintPath>/Users/mnaziripour/Documents/a-loaded-gun/Loaded-Gun/Assets/MaterialUI/Utils/Editor/UnityZip/Ionic.Zip.dll</HintPath>
  </Reference>
  <Reference Include="ink-engine">
- <HintPath>/Users/mnaziripour/Documents/Loaded Gun/Assets/Plugins/Ink/Inklecate/ink-engine.dll</HintPath>
+ <HintPath>/Users/mnaziripour/Documents/a-loaded-gun/Loaded-Gun/Assets/Plugins/Ink/Inklecate/ink-engine.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>/Users/mnaziripour/Documents/Loaded Gun/Assets/Plugins/Ink/Inklecate/Newtonsoft.Json.dll</HintPath>
+ <HintPath>/Users/mnaziripour/Documents/a-loaded-gun/Loaded-Gun/Assets/Plugins/Ink/Inklecate/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -237,12 +229,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{735CCDEE-7E9A-DEA9-39D5-84A4B7EDDEF1}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{351EF486-ABC8-F280-0D9E-05DDA33C7F9C}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{D00EAFAE-33A2-0195-4242-7854D19F922B}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{68C162B5-D272-E6F6-3EA3-7C33F8BB1B66}</Project>      <Name>Assembly-CSharp-Editor-firstpass</Name>    </ProjectReference>
+      <Project>{0711EC9A-E1D8-CFAF-0FD6-87ABE5B302D2}</Project>      <Name>Assembly-CSharp-Editor-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
