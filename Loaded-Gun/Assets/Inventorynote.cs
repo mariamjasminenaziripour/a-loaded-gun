@@ -7,7 +7,6 @@ public class Inventorynote : MonoBehaviour {
 	public GameObject thisPanel;
 	public GameObject introText;
 	public GameObject thisLetter;
-	public GameObject thisDoor;
 
 
 	void OnEnable(){
@@ -27,7 +26,7 @@ public class Inventorynote : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		thisDoor.SetActive (false);
+//		thisDoor.SetActive (false);
 	
 	}
 	
@@ -47,11 +46,9 @@ public class Inventorynote : MonoBehaviour {
 
 	public void closeIt () {
 		thisPanel.SetActive (false);
-		thisDoor.SetActive (true);
 	}
 
 	IEnumerator openLetter(){
-		
 		introText.GetComponent<Text>().enabled = false;
 		yield return new WaitForSeconds(1);
 		thisLetter.SetActive (false);
