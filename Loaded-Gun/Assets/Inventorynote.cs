@@ -39,7 +39,7 @@ public class Inventorynote : MonoBehaviour {
 		if (gesture.pickedObject == thisLetter) {
 				print("mew mew");
 			thisPanel.SetActive (true);
-			  StartCoroutine (openLetter());
+			thisLetter.SetActive (false);
 				
 			}
 	}
@@ -48,10 +48,17 @@ public class Inventorynote : MonoBehaviour {
 		thisPanel.SetActive (false);
 	}
 
-	IEnumerator openLetter(){
-		introText.GetComponent<Text>().enabled = false;
-		yield return new WaitForSeconds(1);
+
+	public void openLetter(){
 		thisLetter.SetActive (false);
 
 	}
+
+//	IEnumerator openLetter(){
+////		introText.GetComponent<Text>().enabled = false;
+////		yield return new WaitForSeconds(1);
+//		//this is how I am getting the letter button to become active after a period of time
+//		thisLetter.SetActive (false);
+//
+//	}
 }
