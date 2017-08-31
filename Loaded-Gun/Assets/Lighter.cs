@@ -21,8 +21,6 @@ public class Lighter : MonoBehaviour {
 	public GameObject newCage;
 	public GameObject homeRoom;
 	public Scene currentScene;
-	public Transform fingerLight;
-	public Transform currentLight;
 
 	void OnEnable(){
 		EasyTouch.On_TouchDown += On_TouchDown;
@@ -90,7 +88,6 @@ public class Lighter : MonoBehaviour {
 				transform.SetAsLastSibling();
 				gameObject.GetComponent<Image> ().sprite = lighterActive;
 				gameObject.transform.localScale = new Vector3 (1.5f, 1.5f, 1f);
-				currentLight = Instantiate (fingerLight, gesture.position, Quaternion.identity);
 			}
 		}
 	}
@@ -101,7 +98,7 @@ public class Lighter : MonoBehaviour {
 			if (gesture.isOverGui ){
 				if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) ){
 					transform.position += (Vector3)gesture.deltaPosition;
-					currentLight.position += (Vector3)gesture.deltaPosition;
+                    //instantiate pointlight prefab under finger location
 				}
 			}
 		}
