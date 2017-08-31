@@ -77,7 +77,7 @@ public class IntroKey : MonoBehaviour {
 			if (gesture.isOverGui ){
 				if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) ){
 
-					transform.position += (Vector3)gesture.deltaPosition;
+				//	transform.position += (Vector3)gesture.deltaPosition;
 				}
 			}
 		}

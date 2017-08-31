@@ -21,15 +21,21 @@ public class Lighter : MonoBehaviour {
 	public GameObject newCage;
 	public GameObject homeRoom;
 	public Scene currentScene;
+    public GameObject fingerLight;
+    private Transform currentLight;
+    private Vector3 deltaPosition;
+    private int fingerIndex;
 
-	void OnEnable(){
+    void OnEnable(){
 		EasyTouch.On_TouchDown += On_TouchDown;
 		EasyTouch.On_TouchStart += On_TouchStart;
 		EasyTouch.On_TouchUp += On_TouchUp;
 		EasyTouch.On_TouchStart2Fingers += On_TouchStart2Fingers;
 		EasyTouch.On_TouchDown2Fingers += On_TouchDown2Fingers;
 		EasyTouch.On_TouchUp2Fingers += On_TouchUp2Fingers;
-	}
+        EasyTouch.On_DragStart += On_DragStart;
+        EasyTouch.On_Drag += On_Drag;
+    }
 
 	void OnDisable(){
 		UnsubscribeEvent();
@@ -46,7 +52,9 @@ public class Lighter : MonoBehaviour {
 		EasyTouch.On_TouchStart2Fingers -= On_TouchStart2Fingers;
 		EasyTouch.On_TouchDown2Fingers -= On_TouchDown2Fingers;
 		EasyTouch.On_TouchUp2Fingers -= On_TouchUp2Fingers;
-	}
+        EasyTouch.On_DragStart -= On_DragStart;
+        EasyTouch.On_Drag -= On_Drag;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -56,15 +64,15 @@ public class Lighter : MonoBehaviour {
 		startAnchor = gameObject.GetComponent<RectTransform> ().anchoredPosition;
 		startImage = gameObject.GetComponent<Image> ().sprite;
 
-		if (currentScene.name == "Main") {
+		
 			candles = GameObject.FindGameObjectsWithTag ("candle");
 			candlesRect = new RectTransform[candles.Length];
 			for (int j = 0; j < candles.Length; j++) {
 				candlesRect [j] = candles [j].GetComponent<RectTransform> ();
 
-			}
-			gunFrame = GameObject.Find ("Gun Frame");
-			gunRect = gunFrame.GetComponent<RectTransform> ();
+			
+			//gunFrame = GameObject.Find ("Gun Frame");
+			//gunRect = gunFrame.GetComponent<RectTransform> ();
 		}
 
 
@@ -72,24 +80,36 @@ public class Lighter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (currentScene.name == "Main") {
-			isAudioChanged = gunFrame.GetComponent<GunFrame> ().audioReversed;
-		}
-		}
+	//	if (currentScene.name == "Main") {
+	//		isAudioChanged = gunFrame.GetComponent<GunFrame> ().audioReversed;
+	//	}
+      
+    }
 
-	void On_TouchStart (Gesture gesture){
+    void Update()
+    {
+        
+    }
+    void On_TouchStart (Gesture gesture){
 		if (gesture.isOverGui && drag){
 			if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) && fingerId==-1){
 				if (currentScene.name == "Main") {
 					Camera.main.GetComponent<CameraSwipe> ().uiDragging = true;
 				}
-				print ("working!");
+				//print ("working!");
 				fingerId = gesture.fingerIndex;
 				transform.SetAsLastSibling();
 				gameObject.GetComponent<Image> ().sprite = lighterActive;
 				gameObject.transform.localScale = new Vector3 (1.5f, 1.5f, 1f);
-			}
-		}
+                
+                Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
+                deltaPosition = position - transform.position;
+                fingerLight.SetActive(true);
+                    //  currentLight = Instantiate(fingerLight, gesture.pickedUIElement.transform.position, Quaternion.identity);
+                print("lighter: " + transform.position);
+
+            }
+        }
 	}
 
 	void On_TouchDown (Gesture gesture){
@@ -97,9 +117,10 @@ public class Lighter : MonoBehaviour {
 		if (fingerId == gesture.fingerIndex && drag){
 			if (gesture.isOverGui ){
 				if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) ){
-					transform.position += (Vector3)gesture.deltaPosition;
-                    //instantiate pointlight prefab under finger location
-				}
+                    Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
+                    transform.position = position - deltaPosition;
+                  //  currentLight.transform.position = position - deltaPosition;
+                }
 			}
 		}
 	}
@@ -111,7 +132,7 @@ public class Lighter : MonoBehaviour {
 			fingerId = -1;
 			gameObject.transform.localScale = startSize;
 			foreach (RectTransform item in candlesRect) {
-				if (gesture.IsOverRectTransform (item, Camera.main) == true && currentScene.name == "Main") {
+				if (gesture.IsOverRectTransform (item, Camera.main) == true) {
 					Camera.main.GetComponent<CameraSwipe> ().uiDragging = false;
 					thisLight = item.transform.GetChild(0);
 					thisLight.GetComponent<Light>().enabled = true;
@@ -134,7 +155,7 @@ public class Lighter : MonoBehaviour {
 				newCage.GetComponent<AudioSource> ().Play ();
 				Destroy (gunFrame);
 			}
-//DESTROY POINT LIGHT ON UP
+            fingerLight.SetActive(false);
 		}
 	}
 
@@ -169,4 +190,41 @@ public class Lighter : MonoBehaviour {
 		}
 	}
 
+
+    void On_DragStart(Gesture gesture)
+    {
+
+        // Verification that the action on the object
+        if (gesture.pickedObject == gameObject)
+        {
+            fingerIndex = gesture.fingerIndex;
+
+            // the world coordinate from touch
+            Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedObject.transform.position);
+            deltaPosition = position - transform.position;
+
+        }
+    }
+
+    void On_Drag (Gesture gesture)
+    {
+
+
+        if (gesture.isOverGui && drag)
+        {
+            if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform)) && fingerId == -1)
+            {
+
+                // the world coordinate from touch
+                Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedObject.transform.position);
+                transform.position = position - deltaPosition;
+
+
+                // Get the drag angle
+                float angle = gesture.GetSwipeOrDragAngle();
+            }
+        }
+        
+
+    }
 }
