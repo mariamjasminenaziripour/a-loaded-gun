@@ -4,28 +4,33 @@ using HedgehogTeam.EasyTouch;
 using UnityEngine.UI;
 
 public class InventoryDrag : MonoBehaviour {
-	private Vector2 start;
-	private Vector3 thisFinger;
-	private Vector3 deltaPosition;
-	public GameObject roomSprite;
-	public GameObject homeRoom;
+    private int fingerId = -1;
+    private bool drag = true;
+    private Vector3 startPosition;
+    private Vector3 startSize;
+    private Vector3 startAnchor;
+    private Sprite startImage;
+    private Sprite thisSprite;
+    private Sprite changeSprite;
+    public GameObject interactionObject;
+    private Vector3 deltaPosition;
+    private MonoBehaviour interactionScript;
+    private RectTransform interactionRect;
 
-	void OnEnable(){
+
+    void OnEnable(){
 		EasyTouch.On_TouchStart += On_TouchStart;
-		EasyTouch.On_DoubleTap += On_DoubleTap;
-		EasyTouch.On_DragStart += On_DragStart;
-		EasyTouch.On_DragEnd += On_DragEnd;
-		EasyTouch.On_Drag += On_Drag;
-	}
+        EasyTouch.On_TouchDown += On_TouchDown;
+        EasyTouch.On_DoubleTap += On_DoubleTap;
+        EasyTouch.On_TouchUp += On_TouchUp;
+        EasyTouch.On_TouchStart2Fingers += On_TouchStart2Fingers;
+        EasyTouch.On_TouchDown2Fingers += On_TouchDown2Fingers;
+        EasyTouch.On_TouchUp2Fingers += On_TouchUp2Fingers;
+    }
 
 	void On_DoubleTap (Gesture gesture)
 	{
-		if (gesture.isOverGui){
-			print ("meow meow");
-				GameObject newRoomSprite = Instantiate(roomSprite) as GameObject;
-				newRoomSprite.transform.SetParent (homeRoom.transform, false);
-				Destroy (this.gameObject);
-		}
+		
 	}
 
 	void OnDisable(){
@@ -39,52 +44,116 @@ public class InventoryDrag : MonoBehaviour {
 	void UnsubscribeEvent(){
 		EasyTouch.On_TouchStart -= On_TouchStart;
 		EasyTouch.On_DoubleTap -= On_DoubleTap;
-		EasyTouch.On_DragStart -= On_DragStart;
-		EasyTouch.On_DragEnd -= On_DragEnd;
-		EasyTouch.On_Drag -= On_Drag;
-	}
+        EasyTouch.On_TouchDown -= On_TouchDown;
+        EasyTouch.On_TouchUp -= On_TouchUp;
+        EasyTouch.On_TouchStart2Fingers -= On_TouchStart2Fingers;
+        EasyTouch.On_TouchDown2Fingers -= On_TouchDown2Fingers;
+        EasyTouch.On_TouchUp2Fingers -= On_TouchUp2Fingers;
+    }
 
-	void On_TouchStart (Gesture gesture){
-		if (gesture.isOverGui){
-			print ("meow meow");
-		//	Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(gesture.position.x, gesture.position.y, -1.16f));
-		//	GameObject newSprite = Instantiate(roomSprite, newPos, new Quaternion()) as GameObject;
-		//	newSprite.transform.SetParent (homeRoom.transform, false);
+    void Start()
+    {
+        startPosition = gameObject.GetComponent<Transform>().position;
+        startSize = gameObject.GetComponent<Transform>().localScale;
+        startAnchor = gameObject.GetComponent<RectTransform>().anchoredPosition;
+        startImage = gameObject.GetComponent<Image>().sprite;
+        interactionRect = interactionObject.GetComponent<RectTransform>();
+        interactionScript = interactionObject.GetComponent<MonoBehaviour>();
+    }
 
-		//	Destroy (this.gameObject);
-			}
-		}
-
-
-	void On_DragStart (Gesture gesture){
-		if (gesture.isOverGui){
-			if (gesture.pickedUIElement == this.gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) {
-				start = Camera.main.ScreenToWorldPoint (gesture.startPosition);
-				Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
-				deltaPosition = position - transform.position;
-			}
-		}
-	}
-
-	void On_Drag (Gesture gesture){
-		if (gesture.isOverGui){
-			if (gesture.pickedUIElement == this.gameObject || gesture.pickedUIElement.transform.IsChildOf( transform)) {
-				print ("hey now!");
-				Vector3 pos = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
-				transform.position = pos - deltaPosition;
-			}
-		}
-
-	}
-
-	void On_DragEnd (Gesture gesture){
-		if (gesture.isOverGui) {
-			if (gesture.pickedUIElement == this.gameObject || gesture.pickedUIElement.transform.IsChildOf (transform)) {
-				print ("it's done yall");
-
-			}
-		}
+    void On_TouchStart (Gesture gesture){
+        if (gesture.isOverGui && drag)
+        {
+            if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform)) && fingerId == -1)
+            {
+                print("mew mew");
+                fingerId = gesture.fingerIndex;
+                transform.SetAsLastSibling();
+                gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+                Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
+                deltaPosition = position - transform.position;
+            }
+        }
 
 
-	}
+    }
+
+
+    void On_TouchDown(Gesture gesture)
+    {
+
+        if (fingerId == gesture.fingerIndex && drag)
+        {
+            if (gesture.isOverGui)
+            {
+                if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform)))
+                {
+                    Vector3 position = gesture.GetTouchToWorldPoint(gesture.pickedUIElement.transform.position);
+                    transform.position = position - deltaPosition;
+                }
+            }
+        }
+    }
+
+    // on touch up, instantiate object. trying screen to world point in triangle but it is instantiating on the edge. fml. 
+    void On_TouchUp(Gesture gesture)
+    {
+
+        if (fingerId == gesture.fingerIndex)
+        {
+            fingerId = -1;
+            gameObject.transform.localScale = startSize;
+            if (gesture.IsOverRectTransform(interactionRect, Camera.main) == true)
+            {
+                print("sup");
+                interactionScript.SendMessage("Interaction");
+               
+            }
+            else
+            {
+                gameObject.transform.position = startPosition;
+                gameObject.GetComponent<RectTransform>().anchoredPosition = startAnchor;
+            }
+        }
+    }
+
+    void On_TouchStart2Fingers(Gesture gesture)
+    {
+        if (gesture.isOverGui && drag)
+        {
+            if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform)) && fingerId == -1)
+            {
+                transform.SetAsLastSibling();
+            }
+        }
+    }
+
+
+    void On_TouchDown2Fingers(Gesture gesture)
+    {
+        if (gesture.isOverGui)
+        {
+            if (gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform))
+            {
+                if ((gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform)))
+                {
+                    transform.position += (Vector3)gesture.deltaPosition;
+                }
+                drag = false;
+            }
+        }
+    }
+
+    void On_TouchUp2Fingers(Gesture gesture)
+    {
+        if (gesture.isOverGui)
+        {
+            if (gesture.pickedUIElement == gameObject || gesture.pickedUIElement.transform.IsChildOf(transform))
+            {
+                drag = true;
+            }
+        }
+    }
+
+
 }

@@ -34,7 +34,8 @@ public class CameraSwipe : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        uiDragging = false;
+        worldDragging = false;
 	
 	}
 	

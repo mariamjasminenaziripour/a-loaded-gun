@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraCollision\Scripts\CameraCollision.cs" />
+    <Compile Include="Assets\ClosePanel.cs" />
+    <Compile Include="Assets\DoorUnlock.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerTouch.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\AutoSelect\MultiLayerUI.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouch\Examples\4.X\AdvancedExamples\MultiCamera\MultiCameraTouch.cs" />
@@ -161,7 +163,10 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+    <Compile Include="Assets\Frame.cs" />
+    <Compile Include="Assets\FramePuzzleOne.cs" />
     <Compile Include="Assets\GunFrame.cs" />
+    <Compile Include="Assets\HorrorManager.cs" />
     <Compile Include="Assets\Intro.cs" />
     <Compile Include="Assets\IntroEnvelope.cs" />
     <Compile Include="Assets\IntroKey.cs" />
@@ -303,6 +308,7 @@
     <Compile Include="Assets\Scripts\Candles.cs" />
     <Compile Include="Assets\Scripts\Drag.cs" />
     <Compile Include="Assets\Scripts\LadyFrame.cs" />
+    <Compile Include="Assets\Scripts\LightFlicker.cs" />
     <Compile Include="Assets\Scripts\LightOn.cs" />
     <Compile Include="Assets\Scripts\PlaySound.cs" />
     <Compile Include="Assets\Scripts\Popup.cs" />
